@@ -1,26 +1,51 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>App</h1>
+  <TheHeader></TheHeader>
+  <div class="container">
+    <CalculateTransaction></CalculateTransaction>
+    <TransactionsList :transactions="transactions"></TransactionsList>
+    <AddTransaction></AddTransaction>
+  </div>
+
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import TheHeader from './components/Layouts/TheHeader'
+import CalculateTransaction from "@/components/CalculateTransaction";
+import TransactionsList from "@/components/TransactionsList";
+import AddTransaction from "@/components/AddTransaction";
 export default {
   name: 'App',
-  components: {
-    HelloWorld
+  components:{
+    AddTransaction,
+    TransactionsList,
+    CalculateTransaction,
+    TheHeader
+  },
+  data(){
+    return{
+      transactions:[
+        {
+          id:1,
+          name:"Cash",
+          amount:-40000
+        },
+        {
+          id:2,
+          name:"Salary",
+          amount:6000
+        },
+        {
+          id:3,
+          name:"Computer",
+          amount:-100
+        },
+
+      ]
+    }
   }
+
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
